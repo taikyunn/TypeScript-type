@@ -63,6 +63,7 @@ var CoffeeSize1;
 ;
 console.log(CoffeeSize1.SHORT);
 // 以下だと途中で数値が変わってくる
+// numberが割と自由に充てることができるからundefinedになりがち。
 var SIZE;
 (function (SIZE) {
     SIZE[SIZE["Small"] = 0] = "Small";
@@ -70,6 +71,36 @@ var SIZE;
     SIZE[SIZE["Large"] = 5] = "Large";
 })(SIZE || (SIZE = {}));
 console.log(SIZE.Medium); // 4
-console.log(SIZE[1]); // Medium
+console.log(SIZE[1]); // undefined
 // no error!!
-console.log(SIZE[5]); // undefined
+console.log(SIZE[5]); // Large
+// any型：何でも入っちゃう。あまり詳しく型付けできない
+// 詳しくtsを使いたい場合はanyを使用しないこと。
+var anything = true;
+anything = 'hello';
+anything = ['hello', 33, true];
+anything = {};
+anything.test = 'test';
+var banana = 'banana';
+banana = anything;
+// union型
+// 下はnumberもstringも扱えるという意味
+var unionType = 10;
+unionType = 'hello';
+unionType.toUpperCase();
+// union型の配列の定義
+// 以下はnumber型とstring型が入る配列を定義している。
+// enum型みたいな使い方ができる。但しオブジェクトではないためドットでアクセスできない
+var unionTypes = [21, 'hello'];
+var clothSize = 'small';
+// リテラル型
+// 以下のようにapple型を指定することができ、appleという文字列しか入らなくなる
+// constを使うことにより、リテラル型を使用することができる。
+// letを使用するとリテラル型を使用できない。
+var apple = 'apple';
+var number = 0;
+var cloth = {
+    color: 'white',
+    size: 'medium'
+};
+var size = 'large';

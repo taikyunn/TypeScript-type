@@ -98,3 +98,37 @@ anything.test = 'test';
 
 let banana = 'banana';
 banana = anything;
+
+// union型
+// 下はnumberもstringも扱えるという意味
+let unionType: number | string = 10;
+unionType = 'hello';
+unionType.toUpperCase();
+
+// union型の配列の定義
+// 以下はnumber型とstring型が入る配列を定義している。
+// enum型みたいな使い方ができる。但しオブジェクトではないためドットでアクセスできない
+let unionTypes: (number | string)[] = [21, 'hello']
+let clothSize: 'small' | 'medium' | 'large' = 'small';
+
+// リテラル型
+// 以下のようにapple型を指定することができ、appleという文字列しか入らなくなる
+// constを使うことにより、リテラル型を使用することができる。
+// letを使用するとリテラル型を使用できない。
+const apple: 'apple' = 'apple';
+const number: 0 = 0;
+
+const cloth: {
+  color: string,
+  size: 'small' | 'medium' | 'large',
+} = {
+  color: 'white',
+  size : 'medium',
+};
+
+// 型のエイリアス
+// リテラル型のように型を書いていくとコードが長くなる。その別名をつける。
+// typeを頭に書いて=で結べばできる。
+type ClothSize = 'small' | 'medium' | 'large';
+let size: ClothSize = 'large';
+
