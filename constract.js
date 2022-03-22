@@ -15,4 +15,4 @@ let Info2 = (id, name) => {
 let getInfo2 = new Info(1, 'Sam');
 
 //'Uncaught TypeError: Info is not a constructor'
-console.log(getInfo.id, getInfo.name);  
+console.log(getInfo.id, getInfo.name);
