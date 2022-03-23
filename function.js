@@ -1,3 +1,4 @@
+"use strict";
 // 関数宣言時に型をつける方法
 // パラメータの型はパラメータの後に今までと同じように記載する
 // パラメータの方は型推論が効かない！注意
@@ -24,15 +25,45 @@ function sayHello1() {
     return;
 }
 // undefined型は何もないものとnullのみ入れることができる。
-var temp;
-var temp1 = null;
+let temp;
+// let temp1: undefined = null;
 // null型もundefined型と同じ値が入る。
-var tmpNull;
-var tmpNull1 = null;
+let tmpNull;
+let tmpNull1 = null;
 // add関数を呼び出す側の型注釈のやり方
 // つまりadd関数においては引数に2つのnumber型の値を必要とし、返り値がnumber型であるという宣言をしている
-var anotherAdd = add;
+const anotherAdd = add;
 // アロー関数の場合
-var doubleNumber = function (number) { return number * 2; };
-
-
+// パラメーターに型をつける場合は、1つでも括弧をつける
+// または左側につけることもできる
+const doubleNumber = (number) => number * 2;
+const doubleNumber1 = num => num * 2;
+// コールバック関数に型をつける
+// cb:(引数:型)=>返り値の形で定義する
+function doubleAndHandle(num, cb) {
+    const doubleNum = cb(num * 2);
+    console.log(doubleNum);
+}
+doubleAndHandle(21, doubleNum => {
+    return doubleNum;
+});
+// unknown型
+// any型を少し厳しくした型
+// any型と同様になんでも入れられる。ただし入れるときは注意する
+let unknownInput;
+let anyInput;
+let text;
+unknownInput = 'hello';
+unknownInput = 21;
+unknownInput = true;
+anyInput = unknownInput;
+// 入れる場合はtypeofで型を限定してから入れる必要がある。
+if (typeof unknownInput === 'string') {
+    text = unknownInput;
+}
+// never型
+// 決して何も返さない型
+function error() {
+    throw new Error();
+}
+console.log(error());

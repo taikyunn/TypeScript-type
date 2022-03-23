@@ -1,38 +1,39 @@
+"use strict";
 // boolean
-var hasValue = true;
+let hasValue = true;
 // number
-var count = 10;
-var float = 3.14;
-var negative = -0.12;
+let count = 10;
+let float = 3.14;
+let negative = -0.12;
 // string
-var single = 'hello';
-var double = "hello";
-var back = "hello";
+let single = 'hello';
+let double = "hello";
+let back = `hello`;
 // object:型推論での定義
-var person = {
+const person = {
     name: "Jack",
     age: 21
 };
 console.log(person.name);
 // object: 型注釈での定義(セミコロンが必要)
-var person1 = {
+const person1 = {
     name: "Jack",
     age: 21
 };
 // object型で定義することもできる。ただし情報がほぼないので、使わないこと
-var person2 = {
+const person2 = {
     name: "Jack",
     age: 21
 };
 // 配列
 // 型推論
-var fruits = ["Apple", "Banana", "Grape"];
+const fruits = ["Apple", "Banana", "Grape"];
 // 型注釈
-var fruits1 = ["Apple", "Banana", "Grape"];
+const fruits1 = ["Apple", "Banana", "Grape"];
 // Tuple型: 厳格な配列を定義したい時に使用
 // 型注釈の形でしか使用できない。
 // 配列の中身の[0]はstring, [1]はnumber,[2]はbooleanという厳格な形の定義ができる
-var book = ["business", 1500, false];
+const book = ["business", 1500, false];
 // 下記はできる。初期値は厳しいけど要素の追加には甘い
 book.push(21);
 // 但し中身を参照する際はエラーになる。
@@ -48,7 +49,7 @@ var CoffeeSize;
     CoffeeSize["VENTI"] = "VENTI";
 })(CoffeeSize || (CoffeeSize = {}));
 ;
-var coffee = {
+const coffee = {
     hot: true,
     size: CoffeeSize.TALL
 };
@@ -76,31 +77,31 @@ console.log(SIZE[1]); // undefined
 console.log(SIZE[5]); // Large
 // any型：何でも入っちゃう。あまり詳しく型付けできない
 // 詳しくtsを使いたい場合はanyを使用しないこと。
-var anything = true;
+let anything = true;
 anything = 'hello';
 anything = ['hello', 33, true];
 anything = {};
 anything.test = 'test';
-var banana = 'banana';
+let banana = 'banana';
 banana = anything;
 // union型
 // 下はnumberもstringも扱えるという意味
-var unionType = 10;
+let unionType = 10;
 unionType = 'hello';
 unionType.toUpperCase();
 // union型の配列の定義
 // 以下はnumber型とstring型が入る配列を定義している。
 // enum型みたいな使い方ができる。但しオブジェクトではないためドットでアクセスできない
-var unionTypes = [21, 'hello'];
-var clothSize = 'small';
+let unionTypes = [21, 'hello'];
+let clothSize = 'small';
 // リテラル型
 // 以下のようにapple型を指定することができ、appleという文字列しか入らなくなる
 // constを使うことにより、リテラル型を使用することができる。
 // letを使用するとリテラル型を使用できない。
-var apple = 'apple';
-var number = 0;
-var cloth = {
+const apple = 'apple';
+const number = 0;
+const cloth = {
     color: 'white',
-    size: 'medium'
+    size: 'medium',
 };
-var size = 'large';
+let size = 'large';

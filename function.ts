@@ -28,7 +28,7 @@ function sayHello1(): undefined {
 
 // undefined型は何もないものとnullのみ入れることができる。
 let temp: undefined ;
-let temp1: undefined = null;
+// let temp1: undefined = null;
 
 // null型もundefined型と同じ値が入る。
 let tmpNull: null;
@@ -39,5 +39,39 @@ let tmpNull1: null = null;
 const anotherAdd: (n1: number, n2: number) => number = add;
 
 // アロー関数の場合
-const doubleNumber = (number: number) => number * 2;
+// パラメーターに型をつける場合は、1つでも括弧をつける
+// または左側につけることもできる
+const doubleNumber = (number: number): number => number * 2;
+const doubleNumber1: (num: number) =>  number = num => num * 2;
 
+// コールバック関数に型をつける
+// cb:(引数:型)=>返り値の形で定義する
+function doubleAndHandle(num: number, cb: (nun: number) => number): void {
+  const doubleNum = cb(num * 2);
+  console.log(doubleNum);
+}
+doubleAndHandle(21, doubleNum => {
+  return doubleNum
+});
+
+// unknown型
+// any型を少し厳しくした型
+// any型と同様になんでも入れられる。ただし入れるときは注意する
+let unknownInput: unknown;
+let anyInput: any;
+let text: string;
+unknownInput = 'hello';
+unknownInput = 21;
+unknownInput = true;
+anyInput = unknownInput;
+// 入れる場合はtypeofで型を限定してから入れる必要がある。
+if (typeof unknownInput === 'string') {
+  text = unknownInput;
+}
+
+// never型
+// 決して何も返さない型
+function error(): never {
+  throw new Error();
+}
+console.log(error());
