@@ -1,12 +1,14 @@
-function echo(message: string) {
+function echo(message: string): string | null{
   return message;
 }
 
 let implicitAny;
 implicitAny = 'implicitAny';
-implicitAny.toUpperCase(); 
+implicitAny.toUpperCase();
 
-let nullableMessage: string = null;
-let undefinedableMessage: string = undefined;
-let onlyNull :null = undefined;
-let onlyUndefined: undefined = null;
+let nullableMessage = echo('hi');
+let undefinedableMessage: string | undefined = undefined;
+let onlyNull :null | undefined = undefined;
+let onlyUndefined: undefined | null = null;
+
+echo.call(null, 'hi');
