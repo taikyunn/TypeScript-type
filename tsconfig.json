@@ -12,7 +12,8 @@
 
     /* Language and Environment */
     "target": "es2016",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
-    // "lib": [],                                        /* Specify a set of bundled library declaration files that describe the target runtime environment. */
+    // "lib": [],
+    /* Specify a set of bundled library declaration files that describe the target runtime environment. */
     // "jsx": "preserve",                                /* Specify what JSX code is generated. */
     // "experimentalDecorators": true,                   /* Enable experimental support for TC39 stage 2 draft decorators. */
     // "emitDecoratorMetadata": true,                    /* Emit design-type metadata for decorated declarations in source files. */
@@ -45,7 +46,7 @@
     // "declaration": true,                              /* Generate .d.ts files from TypeScript and JavaScript files in your project. */
     // "declarationMap": true,                           /* Create sourcemaps for d.ts files. */
     // "emitDeclarationOnly": true,                      /* Only output d.ts files and not JavaScript files. */
-    // "sourceMap": true,                                /* Create source map files for emitted JavaScript files. */
+    "sourceMap": true,                                /* Create source map files for emitted JavaScript files. */
     // "outFile": "./",                                  /* Specify a file that bundles all outputs into one JavaScript file. If `declaration` is true, also designates a file that bundles all .d.ts output. */
     // "outDir": "./",                                   /* Specify an output folder for all emitted files. */
     // "removeComments": true,                           /* Disable emitting comments. */
@@ -98,19 +99,29 @@
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   },
+  // コンパイルしたいファイルを設定できる。デフォルトは全てのファイルが選択されている。
+  // "include": [
+  //   "*/index.ts",
+  // ],
   // exclude:除く。つまりコンパイルしたくないファイルを記載することでコンパイルされなくなる。
   // ワイルドカードを使用することもできる。
   // excludeの対象はルートディレクトリのみ。ルートにないファイルは設定対象外になるので注意。
   "exclude": [
-    "compiler.ts",
-    "tmp/compiler.ts",
-    "*.spec.ts",
+    // "compiler.ts",
+    // "tmp/compiler.ts",
+    // "*.spec.ts",
+
     // 以下のように**からファイルをしていると、どのディレクトリのファイルでも対象にすることができる。
     // 下記ではcompiler.tsがどのデイレク取りにあってもコンパイルされないとと言う意味になる。
-    "**/compiler.ts",
+    // "**/compiler.ts",
     // node_modulesはコンパイルしないファイルのため記載する。
     // しかしnode_modulesはデフォルトでコンパイル対象外になっている。
     // しかしexcludeで設定している場合は別途記載する必要がある。デフォルト設定を上書きしてしまうため。
-    "node_modules",
-  ]
+    // "node_modules",
+  ],
+  // ただのファイルを指定する時に使用
+  // ワイルドカードが使用できない点に注意
+  "files": [
+    "tmp/compiler.ts"
+  ],
 }
